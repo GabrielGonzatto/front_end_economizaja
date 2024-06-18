@@ -1,0 +1,115 @@
+<!-- Adicionando a barra de navegação -->
+<app-navbar></app-navbar>
+
+<div class="space"></div>
+
+<div class="container">
+  <button type="button" class="btn btn-success mt-3" mdbRipple (click)="new()">
+    Adicionar Categoria
+  </button>
+</div>
+
+<div class="container">
+  <div class="col-lg-6">
+    <div class="card">
+      <h2 class="card-header">Receitas</h2>
+      <div class="card-body" style="max-height: 300px; overflow-y: auto">
+        <table class="table table-fixed">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Percentual</th>
+              <th>Valor total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (categoriaReceita of categoriasReceita; track $index) {
+            <tr>
+              <td>{{ categoriaReceita.nome }}</td>
+              <td>%</td>
+              <td>R$</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-success mt-3"
+                  mdbRipple
+                  (click)="editar()"
+                >
+                  editar
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <h2 class="card-header">Despesas</h2>
+      <div class="card-body" style="max-height: 300px; overflow-y: auto">
+        <table class="table table-fixed">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Percentual</th>
+              <th>Valor total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (categoriaDespesa of categoriasDespesa; track $index) {
+            <tr>
+              <td>{{ categoriaDespesa.nome }}</td>
+              <td>%</td>
+              <td>R$</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-success mt-3"
+                  mdbRipple
+                  (click)="editar()"
+                >
+                  editar
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalCadastrarCategoria>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastrar categoria</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-cadastrar-categoria-form></app-cadastrar-categoria-form>
+  </div>
+</ng-template>
+
+<ng-template #modalEditarCategoria>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Editar categoria</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-editar-categoria-form></app-editar-categoria-form>
+  </div>
+</ng-template>

@@ -1,0 +1,15 @@
+input {
+  border: solid 1px black !important;
+}
+
+h1 {
+  color: black;
+}
+
+h3 {
+  color: black;
+}
+
+img {
+  height: 60vh;
+}
