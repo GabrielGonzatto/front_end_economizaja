@@ -13,6 +13,10 @@ export class CategoriaServiceService {
 
   constructor() { }
 
+  cadastrar(categoria: Categoria): Observable<Categoria>{
+    return this.http.post<Categoria>(this.API +'cadastrar', categoria)
+  }
+
   listarCategoriasDeReceita(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.API+"receita")
   }

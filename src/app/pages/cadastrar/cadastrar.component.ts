@@ -1,29 +1,25 @@
-import { Cliente } from '../../core/model/cliente';
-import { Component, inject } from '@angular/core';
-import { ClienteServiceService } from '../../core/service/cliente-service.service';
-import { FormsModule } from '@angular/forms'; // Importe FormsModule aqui
+import { CadastrarClienteDTO } from './../../core/model/cliente/DTO/cadastrar-cliente-dto';
+import { Component} from '@angular/core';
+
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastrar',
   standalone: true,
-  imports: [FormsModule],
+  imports: [MdbFormsModule, FormsModule],
   templateUrl: './cadastrar.component.html',
   styleUrl: './cadastrar.component.css'
 })
 export class CadastrarComponent {
-  clienteService = inject(ClienteServiceService)
+  cadastrarClienteDTO = new CadastrarClienteDTO();
 
-  cliente = new Cliente();
 
-  cadastrar(cliente: Cliente){
-    this.clienteService.cadastrar(cliente).subscribe({
-      next: mensagem => {
-        alert('Usuário cadastrado com sucesso');
-      },
-      error: (error: any) => {
-        alert('Usuário NÃO cadastrado com sucesso');
-        console.error('Erro ao buscar desenvolvedores:', error);
-      }
-    });
+  constructor() {
+
+  }
+
+  cadastrar(){
+
   }
 }

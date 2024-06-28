@@ -14,33 +14,41 @@
         <div class="card">
           <div class="card-body">
             <h3 class="text-center">Acesse sua conta</h3>
-            <form>
-              <!-- Email input -->
-              <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" />
-                <label class="form-label" for="email">Email</label>
-              </div>
+            <br />
+            <mdb-form-control class="mb-4">
+              <input
+                mdbInput
+                type="email"
+                id="email"
+                class="form-control"
+                [(ngModel)]="loginDTO.email"
+              />
+              <label mdbLabel class="form-label" for="email">Email</label>
+            </mdb-form-control>
 
-              <!-- Password input -->
-              <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" id="senha" class="form-control" />
-                <label class="form-label" for="senha">Senha</label>
-              </div>
+            <mdb-form-control class="mb-4">
+              <input
+                mdbInput
+                type="password"
+                id="senha"
+                class="form-control"
+                [(ngModel)]="loginDTO.senha"
+              />
+              <label mdbLabel class="form-label" for="senha">Senha</label>
+            </mdb-form-control>
 
-              <!-- Submit button -->
-              <button
-                data-mdb-ripple-init
-                type="button"
-                class="btn btn-success btn-block mb-4"
-              >
-                Entrar
-              </button>
+            <div class="text-center">
+              <p>Não possui conta? <a href="/cadastrar">Crie sua conta</a></p>
+            </div>
 
-              <!-- Register -->
-              <div class="text-center">
-                <p>Não possui conta? <a href="/cadastrar">Cadastre-se</a></p>
-              </div>
-            </form>
+            <button
+              mdbRipple
+              type="button"
+              class="btn btn-success btn-block"
+              (click)="login()"
+            >
+              Entrar
+            </button>
           </div>
         </div>
       </div>

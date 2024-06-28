@@ -1,7 +1,3 @@
-export enum ClienteRole {
-  CLIENTE = 'cliente',
-}
-
 export class Cliente {
   id!: number;
   primeiro_nome!: string;
@@ -9,7 +5,6 @@ export class Cliente {
   cpf!: string;
   email!: string;
   senha!: string;
-  role!: ClienteRole;
 
   constructor(){}
 
