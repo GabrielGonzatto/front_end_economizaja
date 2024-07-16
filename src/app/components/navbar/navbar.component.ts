@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,21 +14,15 @@ import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 })
 export class NavbarComponent {
   router = inject(Router);
-
-  private tokenKey = 'token';
+  app = inject(AppComponent);
 
   constructor(){
-    if(this.getToken() == null){
+    if (this.app.getToken() == null) {
       this.router.navigate(['/login']);
     }
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
-
   logout() {
-    localStorage.removeItem(this.tokenKey);
-    this.router.navigate(['/login']);
+    this.app.logout();
   }
 }

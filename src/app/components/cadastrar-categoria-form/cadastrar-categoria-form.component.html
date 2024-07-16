@@ -1,11 +1,31 @@
-  <mdb-form-control class="mb-4">
-    <input mdbInput type="text" id="nomeCategoria" class="form-control" [(ngModel)]="categoria.nome"/>
-    <label mdbLabel class="form-label" for="nomeCategoria">Nome da categoria</label>
-  </mdb-form-control>
+<mdb-form-control class="mb-4">
+  <input
+    mdbInput
+    type="text"
+    id="nomeCategoria"
+    class="form-control"
+    [(ngModel)]="categoria.nome"
+  />
+  <label mdbLabel class="form-label" for="nomeCategoria"
+    >Nome da categoria</label
+  >
+</mdb-form-control>
 
-  <mdb-form-control class="mb-4">
-    <input mdbInput type="text" id="tipoCategoria" class="form-control" [(ngModel)]="categoria.tipo"/>
-    <label mdbLabel class="form-label" for="tipoCategoria">Tipo da categoria</label>
-  </mdb-form-control>
+<div class="mb-4 custom-select">
+  <div><label for="tipoCategoria">Selecione o tipo de categoria:</label></div>
+  <div>
+    <select id="tipoCategoria" [(ngModel)]="categoria.tipo">
+      <option value="receita">receita</option>
+      <option value="despesa">despesa</option>
+    </select>
+  </div>
+</div>
 
-<button data-mdb-ripple-init type="button" class="btn btn-success btn-block mb-4" (click)="cadastrar()">Cadastrar</button>
+<button
+  data-mdb-ripple-init
+  type="button"
+  class="btn btn-success btn-block mb-4"
+  (click)="cadastrar()"
+>
+  Cadastrar
+</button>

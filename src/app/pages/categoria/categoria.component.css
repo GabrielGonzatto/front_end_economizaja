@@ -1,12 +1,18 @@
 .space {
-  margin-top: 13vh;
+  margin-top: 1%;
 }
 
 .container {
   display: flex;
   justify-content: center;
+}
+
+.containerB {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
+
 
 .mt-3 {
   margin: 0 !important;
@@ -24,4 +30,14 @@
 
 .table {
   color: black;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .col-lg-6 {
+    width: 100%;
+  }
 }

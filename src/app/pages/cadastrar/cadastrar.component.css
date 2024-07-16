@@ -9,3 +9,29 @@ h3 {
 img {
   height: 60vh;
 }
+
+@media (max-width: 991px) {
+  h1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+  }
+
+  img {
+    height: 0px;
+    width: 0px;
+  }
+}
+
+@media (max-width: 338px) {
+  h1 {
+    font-size: 40px;
+  }
+
+}
+
+@media (max-width: 275px) {
+  h1 {
+    font-size: 30px;
+  }
+
+}

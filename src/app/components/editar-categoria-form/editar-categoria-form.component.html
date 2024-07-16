@@ -1,17 +1,27 @@
 <form>
   <mdb-form-control class="mb-4">
-    <input mdbInput type="text" id="nomeCategoria" class="form-control" />
-    <label mdbLabel class="form-label" for="nomeCategoria"
-      >Nome da categoria</label
-    >
+    <input mdbInput type="text" id="nome" class="form-control" name="nome" [(ngModel)]="categoria.nome"/>
+    <label mdbLabel class="form-label" for="nome">Nome da categoria</label>
   </mdb-form-control>
 
   <div class="botoes">
-    <button style="margin-right: 20px;" data-mdb-ripple-init type="button" class="btn btn-success">
-      Cadastrar
+    <button
+      style="margin-right: 20px"
+      data-mdb-ripple-init
+      type="button"
+      class="btn btn-success"
+      (click)="editar()"
+    >
+      Editar
     </button>
 
-    <button style="margin-left: 20px;" data-mdb-ripple-init type="button" class="btn btn-danger">
+    <button
+      style="margin-left: 20px"
+      data-mdb-ripple-init
+      type="button"
+      class="btn btn-danger"
+      (click)="desativar(categoria.id)"
+    >
       Excluir
     </button>
   </div>

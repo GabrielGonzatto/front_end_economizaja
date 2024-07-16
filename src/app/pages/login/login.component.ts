@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ClienteServiceService } from '../../core/service/cliente-service.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -16,30 +17,35 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   clienteService = inject(ClienteServiceService);
+  app = inject(AppComponent)
   router = inject(Router);
 
   loginDTO = new LoginDTO();
 
   private token!: string;
-  private tokenKey = 'token';
+  senha!: string;
 
   constructor() {
-    if (this.getToken() != null) {
+    if (this.app.getToken() != null) {
       this.router.navigate(['/MenuPrincipal']);
     }
   }
 
+  // LOGIN
   login() {
-    if (this.loginDTO.email == null || this.loginDTO.senha == null) {
+    if (this.loginDTO.email == null || this.senha == null) {
       Swal.fire({
         title: 'Preencha todos os campos',
         icon: 'question',
       });
     } else {
+      this.loginDTO.senha = this.app.criptografarString(this.senha);
       this.clienteService.login(this.loginDTO).subscribe({
         next: (resposta) => {
-          this.salvarToken(resposta.token);
-          this.router.navigate(['/MenuPrincipal']);
+          this.app.salvarToken(resposta.token);
+          this.router.navigate(['/MenuPrincipal']).then(() => {
+            window.location.reload();
+          });
         },
         error: (error: any) => {
           Swal.fire({
@@ -52,11 +58,6 @@ export class LoginComponent {
     }
   }
 
-  salvarToken(token: string) {
-    localStorage.setItem(this.tokenKey, token);
-  }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
+
 }

@@ -1,10 +1,9 @@
-<!-- Adicionando a barra de navegação -->
 <app-navbar></app-navbar>
 
 <div class="space"></div>
 
-<div class="container">
-  <button type="button" class="btn btn-success mt-3" mdbRipple (click)="new()">
+<div class="containerB">
+  <button style="background-color: white; color: #000;" type="button" class="btn btn-success mt-3" mdbRipple (click)="new()">
     Adicionar Categoria
   </button>
 </div>
@@ -12,8 +11,24 @@
 <div class="container">
   <div class="col-lg-6">
     <div class="card">
-      <h2 class="card-header">Receitas</h2>
-      <div class="card-body" style="max-height: 300px; overflow-y: auto">
+      <h2 class="card-header">Categorias de Receitas</h2>
+
+      <div class="card-body">
+        <div
+          *ngIf="maioresGastosMesCategoriaDTO.categoriasReceita.length != 0"
+          echarts
+          [options]="chartOptionReceita"
+          class="demo-chart"
+          style="max-height: 250px"
+        ></div>
+        <h5
+          *ngIf="maioresGastosMesCategoriaDTO.categoriasReceita.length == 0"
+          style="color: gray"
+        >
+          Você não possui nenhum lançamento cadastro nesse mês
+        </h5>
+      </div>
+      <div style="max-height: 300px; overflow-y: auto">
         <table class="table table-fixed">
           <thead>
             <tr>
@@ -34,7 +49,9 @@
                   type="button"
                   class="btn btn-success mt-3"
                   mdbRipple
-                  (click)="editar()"
+                  (click)="
+                    editarModal(categoriaReceita.id, categoriaReceita.nome)
+                  "
                 >
                   editar
                 </button>
@@ -48,37 +65,56 @@
   </div>
   <div class="col-lg-6">
     <div class="card">
-      <h2 class="card-header">Despesas</h2>
-      <div class="card-body" style="max-height: 300px; overflow-y: auto">
-        <table class="table table-fixed">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Percentual</th>
-              <th>Valor total</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (categoriaDespesa of categoriasDespesa; track $index) {
-            <tr>
-              <td>{{ categoriaDespesa.nome }}</td>
-              <td>%</td>
-              <td>R$</td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-success mt-3"
-                  mdbRipple
-                  (click)="editar()"
-                >
-                  editar
-                </button>
-              </td>
-            </tr>
-            }
-          </tbody>
-        </table>
+      <h2 class="card-header">Categorias de despesas</h2>
+      <div class="card-body">
+        <div class="card-body">
+          <div
+            *ngIf="maioresGastosMesCategoriaDTO.categoriasDespesa.length != 0"
+            echarts
+            [options]="chartOptionDespesa"
+            class="demo-chart"
+            style="max-height: 250px"
+          ></div>
+          <h5
+            *ngIf="maioresGastosMesCategoriaDTO.categoriasDespesa.length == 0"
+            style="color: gray"
+          >
+            Você não possui nenhum lançamento cadastro nesse mês
+          </h5>
+        </div>
+        <div style="max-height: 300px; overflow-y: auto">
+          <table class="table table-fixed">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Percentual</th>
+                <th>Valor total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (categoriaDespesa of categoriasDespesa; track $index) {
+              <tr>
+                <td>{{ categoriaDespesa.nome }}</td>
+                <td>%</td>
+                <td>R$</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-success mt-3"
+                    mdbRipple
+                    (click)="
+                      editarModal(categoriaDespesa.id, categoriaDespesa.nome)
+                    "
+                  >
+                    editar
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
