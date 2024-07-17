@@ -1,7 +1,5 @@
 import { MaioresGastosMesHomeDTO } from "../../categoria/DTO/maiores-gastos-mes-home-dto";
-import { DadosParcela } from "../../parcela/DTO/dados-parcela";
-import { DadosLancamento } from "./dados-lancamento";
-import { ListagemHomePagarReceber } from "./listagem-home-pagar-receber";
+import { ListagemLancamentoPagarReceber } from "./listagem-lancamento-pagar-receber";
 
 export class DadosHome {
   nome!: string;
@@ -9,11 +7,11 @@ export class DadosHome {
   receitaMensal!: number;
   despesaMensal!: number;
 
-  contasAPagar!: ListagemHomePagarReceber[]
-  contasAPagarAtrasadas!: ListagemHomePagarReceber[]
+  contasAPagar!: ListagemLancamentoPagarReceber[]
+  contasAPagarAtrasadas!: ListagemLancamentoPagarReceber[]
 
-  contasAReceber!: ListagemHomePagarReceber[]
-  contasAReceberAtrasadas!: ListagemHomePagarReceber[]
+  contasAReceber!: ListagemLancamentoPagarReceber[]
+  contasAReceberAtrasadas!: ListagemLancamentoPagarReceber[]
 
   maioresGastos!: MaioresGastosMesHomeDTO[];
 }

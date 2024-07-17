@@ -1,29 +1,11 @@
-.header {
+.responsivo {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.listagem h4{
-  font-size: 17px;
-  color: #6a6a6a;
-}
-
-.listagem h5{
-  font-size: 16px;
-  color: #6a6a6a;
-}
-
-.dadosListagem {
-  display: flex;
-  text-align: center;
-  justify-content: space-between;
-}
-
-.linha {
-  width: 100%;
-  height: 2px;
-  margin-bottom: 10px;
+.x {
+  margin: 10px;
+  width: 50%;
+  border: solid 1px #000;
 }
 
 .custom-select {
@@ -33,7 +15,7 @@
 .custom-select select {
 	appearance: none;
 	-webkit-appearance: none;
-	width: 110%;
+	width: 40%;
 	font-size: 17px;
 	padding-top: 0.32rem;
   padding-bottom: 0.32rem;
@@ -53,11 +35,10 @@
 	position: absolute;
 	pointer-events: none;
 	top: 70%;
-	right: -5px;
+	left: 410px;
 	transform: translate(0, -50%);
 	width: 12px;
 	height: 12px;
 	background-color: #000000;
 	clip-path: polygon(8% 17%, 0% 25%, 50% 84%, 100% 25%, 92% 17%, 50% 65%);
 }
-

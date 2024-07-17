@@ -60,13 +60,12 @@
         <div class="card-body">
           <div *ngIf="dadosHome.contasAPagarAtrasadas.length != 0">
             <h4 class="card-title">Contas a pagar atrasadas</h4>
-            <div class="listagem" *ngFor="let item of dadosHome.contasAPagarAtrasadas">
+            <div
+              class="listagem"
+              *ngFor="let item of dadosHome.contasAPagarAtrasadas"
+            >
               <div class="dadosListagem">
-                <h4
-                  style="cursor: pointer"
-                  title="Clique para editar ou ver mais detalhes"
-                  (click)="editar(item)"
-                >
+                <h4>
                   {{ item.descricao }}
                 </h4>
                 <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
@@ -87,11 +86,7 @@
           <h4 class="card-title">Contas a pagar</h4>
           <div class="listagem" *ngFor="let item of dadosHome.contasAPagar">
             <div class="dadosListagem">
-              <h4
-                style="cursor: pointer"
-                title="Clique para editar ou ver mais detalhes"
-                (click)="editar(item)"
-              >
+              <h4>
                 {{ item.descricao }}
               </h4>
               <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
@@ -114,13 +109,12 @@
         <div class="card-body">
           <div *ngIf="dadosHome.contasAReceberAtrasadas.length != 0">
             <h4 class="card-title">Contas a receber atrasadas</h4>
-            <div class="listagem" *ngFor="let item of dadosHome.contasAReceberAtrasadas">
+            <div
+              class="listagem"
+              *ngFor="let item of dadosHome.contasAReceberAtrasadas"
+            >
               <div class="dadosListagem">
-                <h4
-                  style="cursor: pointer"
-                  title="Clique para editar ou ver mais detalhes"
-                  (click)="editar(item)"
-                >
+                <h4>
                   {{ item.descricao }}
                 </h4>
                 <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
@@ -138,14 +132,10 @@
               <div class="linha"></div>
             </div>
           </div>
-          <h4 class="card-title">Contas a pagar</h4>
+          <h4 class="card-title">Contas a receber</h4>
           <div class="listagem" *ngFor="let item of dadosHome.contasAReceber">
             <div class="dadosListagem">
-              <h4
-                style="cursor: pointer"
-                title="Clique para editar ou ver mais detalhes"
-                (click)="editar(item)"
-              >
+              <h4>
                 {{ item.descricao }}
               </h4>
               <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
@@ -231,5 +221,20 @@
   </div>
   <div class="modal-body">
     <app-cadastrar-lancamento-despesa-form></app-cadastrar-lancamento-despesa-form>
+  </div>
+</ng-template>
+
+<ng-template #modalEditarLancamento>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Editar lançamento</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-editar-lancamento-form></app-editar-lancamento-form>
   </div>
 </ng-template>

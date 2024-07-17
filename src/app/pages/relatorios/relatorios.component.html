@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container" style="margin-top: 20px">
+  <div class="card">
+    <div class="card-header">
+      <h2>Gráficos de entradas e saídas</h2>
+      <div class="custom-select">
+        <select
+          id="dataLancamentoConsulta"
+          [(ngModel)]="dataLancamento.dataLancamentoConsulta"
+          (ngModelChange)="atualizaData()"
+        >
+          <option value="mes">Mês</option>
+          <option value="ano">Ano</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body responsivo">
+      <div class="card x">
+        <h2 class="card-header">Gráfico de receita</h2>
+
+        <div class="card-body">
+          <div echarts [options]="chartOptionReceita"></div>
+        </div>
+      </div>
+
+      <div class="card x">
+        <h2 class="card-header">Gráficos de despesas</h2>
+
+        <div class="card-body">
+          <div echarts [options]="chartOptionDespesa"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

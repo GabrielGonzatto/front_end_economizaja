@@ -16,7 +16,8 @@ import {
   provideEcharts,
 } from 'ngx-echarts';
 import { EChartsOption } from 'echarts';
-import { ListagemHomePagarReceber } from '../../core/model/lancamento/DTO/listagem-home-pagar-receber';
+import { ListagemLancamentoPagarReceber } from '../../core/model/lancamento/DTO/listagem-lancamento-pagar-receber';
+import { EditarLancamentoFormComponent } from '../../components/editar-lancamento-form/editar-lancamento-form.component';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,7 @@ import { ListagemHomePagarReceber } from '../../core/model/lancamento/DTO/listag
     MdbModalModule,
     CadastrarLancamentoReceitaFormComponent,
     CadastrarLancamentoDespesaFormComponent,
+    EditarLancamentoFormComponent,
     NgFor,
     NgIf,
     CommonModule,
@@ -58,7 +60,6 @@ export class HomeComponent {
     this.lancamentoService.dadosHomeSaldo().subscribe({
       next: (dadoshomeSaldosBack) => {
         this.dadosHome = dadoshomeSaldosBack;
-        //this.dadosHome.maioresGastos = []
         this.updateChart();
       },
       error: (error) => {
@@ -67,7 +68,7 @@ export class HomeComponent {
     });
   }
 
-  pagarDespagar(pagarDespagar: ListagemHomePagarReceber) {
+  pagarDespagar(pagarDespagar: ListagemLancamentoPagarReceber) {
     this.lancamentoService.pagarDespagarLancamento(pagarDespagar).subscribe({
       next: (mensagem) => {
         this.getDadosHome();
@@ -76,9 +77,6 @@ export class HomeComponent {
         console.log(error);
       },
     });
-  }
-
-  editar(pagarDespagar: ListagemHomePagarReceber) {
   }
 
   updateChart() {

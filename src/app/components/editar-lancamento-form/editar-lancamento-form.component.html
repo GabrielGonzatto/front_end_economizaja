@@ -1,0 +1,97 @@
+<form>
+  <mdb-form-control class="mb-4">
+    <input
+      mdbInput
+      type="text"
+      id="descricao"
+      name="descricao"
+      class="form-control"
+      [(ngModel)]="lancamento.descricao"
+    />
+    <label mdbLabel class="form-label" for="descricao">Descrição</label>
+  </mdb-form-control>
+
+  <div class="row g-3">
+    <div class="col-sm-6">
+      <mdb-form-control>
+        <input
+          mdbInput
+          type="text"
+          id="valor"
+          name="valor"
+          class="form-control"
+          mask="separator.2"
+          separator="."
+          [(ngModel)]="lancamento.valor"
+        />
+        <label mdbLabel class="form-label" for="valor">Valor</label>
+      </mdb-form-control>
+    </div>
+
+    <div class="col-sm-5">
+      <mdb-form-control>
+        <input
+          mdbInput
+          type="date"
+          id="data"
+          name="data"
+          class="form-control"
+          [(ngModel)]="lancamento.data"
+        />
+        <label mdbLabel class="form-label" for="data">Data</label>
+      </mdb-form-control>
+    </div>
+  </div>
+
+  <div class="mb-4 custom-select">
+    <div><label for="categoria">Selecione a categoria:</label></div>
+    <div>
+      <select
+        id="categoria"
+        name="categoria"
+        [(ngModel)]="lancamento.categoria"
+      >
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">
+          {{ categoria.nome }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="lancamento.numero_de_parcelas != 0">
+    <div class="row g-3">
+      <div class="col-sm"></div>
+
+      <div class="col-sm-7">
+        <mdb-form-control>
+          <input
+            mdbInput
+            type="text"
+            id="numero_parcelas"
+            name="numero_parcelas"
+            class="form-control"
+            mask="0*"
+            [(ngModel)]="lancamento.numero_de_parcelas"
+          />
+          <label mdbLabel class="form-label" for="numero_parcelas">Número de parcelas</label>
+        </mdb-form-control>
+      </div>
+
+      <div class="col-sm"></div>
+    </div>
+
+    <div>
+      <h5>Serão lançadas parcelas de R$ </h5>
+    </div>
+  </div>
+
+  <br />
+
+  <button
+    data-mdb-ripple-init
+    type="button"
+    class="btn btn-success btn-block mb-4"
+  >
+    Cadastrar
+  </button>
+</form>

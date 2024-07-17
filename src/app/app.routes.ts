@@ -6,6 +6,7 @@ import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
 import { LancamentosComponent } from './pages/lancamentos/lancamentos.component';
+import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
 
 export const routes: Routes = [
   {path: "", redirectTo: "login", pathMatch: 'full'},
@@ -15,4 +16,5 @@ export const routes: Routes = [
   {path: "MenuPrincipal", component: HomeComponent},
   {path: "editarPerfil", component: EditarPerfilComponent},
   {path: "lancamentos", component: LancamentosComponent},
+  {path: "relatorios", component: RelatoriosComponent},
 ];

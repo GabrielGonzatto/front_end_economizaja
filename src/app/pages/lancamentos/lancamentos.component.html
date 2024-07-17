@@ -9,17 +9,104 @@
           class="fas fa-circle-chevron-up fa-2x"
           (click)="abrirModalCadastrarReceita()"
         ></i>
-        <h5 class="card-title">Lançamentos</h5>
+        <div
+          *ngIf="
+            dataLancamentosConsulta.dataLancamentoConsulta == 'dataEspecifica'
+          "
+        >
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="date"
+              id="dataInicial"
+              name="dataInicial"
+              class="form-control"
+              [(ngModel)]="dataLancamentosConsulta.dataInicial"
+              (ngModelChange)="getLancamentosData()"
+            />
+            <label mdbLabel class="form-label" for="dataInicial"
+              >Data inicial</label
+            >
+          </mdb-form-control>
+        </div>
+        <div>
+          <h5 class="card-title">Lançamentos</h5>
+          <div class="custom-select">
+            <select
+              id="dataLancamentoConsulta"
+              [(ngModel)]="dataLancamentosConsulta.dataLancamentoConsulta"
+              (ngModelChange)="getLancamentosData()"
+            >
+              <option value="hoje">Hoje</option>
+              <option value="mes">Mês</option>
+              <option value="ano">Ano</option>
+              <option value="dataEspecifica">Data especifica</option>
+            </select>
+          </div>
+        </div>
+        <div
+          *ngIf="
+            dataLancamentosConsulta.dataLancamentoConsulta == 'dataEspecifica'
+          "
+        >
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="date"
+              id="dataFinal"
+              name="dataFinal"
+              class="form-control"
+              [(ngModel)]="dataLancamentosConsulta.dataFinal"
+              (ngModelChange)="getLancamentosData()"
+            />
+            <label mdbLabel class="form-label" for="dataFinal"
+              >Data final</label
+            >
+          </mdb-form-control>
+        </div>
         <i
           style="color: red; cursor: pointer"
           class="fas fa-circle-chevron-down fa-2x"
           (click)="abrirModalCadastrarDespesa()"
         ></i>
       </div>
-    </div>
-    <div class="card-footer" style="text-align: right">
-      <p>Saldo previsto: R$ 00,00</p>
-      <p>Saldo geral: R$ 00,00</p>
+      <br />
+      <div style="max-height: 300px; overflow-y: auto;">
+        <div class="listagem" *ngFor="let item of listagemLancamentos">
+
+          <div class="dadosListagem">
+            <h4
+            (click)="deletar(item)"
+            title="Clique aqui para deletar o lançamento"
+            style="cursor: pointer;"
+            >
+              {{ item.descricao }}
+            </h4>
+            <h4 style="margin-right: 25px;">R$ {{ item.valor }}</h4>
+          </div>
+          <div class="dadosListagem">
+            <h5>{{ item.data }}</h5>
+            <i
+              (click)="pagarDespagar(item)"
+              class="fas fa-thumbs-down"
+              title="Receita não paga, clique para pagar"
+              *ngIf="item.paga_recebida == false"
+              style="color: red; cursor: pointer; margin-right: 25px;"
+            ></i>
+            <i
+              (click)="pagarDespagar(item)"
+              class="fas fa-thumbs-up"
+              title="Receita paga, clique para retirar pagamento"
+              *ngIf="item.paga_recebida == true"
+              style="color: green; cursor: pointer; margin-right: 25px;"
+            ></i>
+          </div>
+          <div class="linha"></div>
+        </div>
+      </div>
+      <div style="text-align: center" *ngIf="listagemLancamentos.length == 0">
+        <h5>Você não possui lançamentos cadastradaos na data selecionada</h5>
+      </div>
     </div>
   </div>
 </div>

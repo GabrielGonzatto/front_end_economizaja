@@ -1,4 +1,4 @@
-export class ListagemHomePagarReceber {
+export class ListagemLancamentoPagarReceber {
   id!: number;
   descricao!: string;
   tipo!: string;
@@ -6,4 +6,3 @@ export class ListagemHomePagarReceber {
   valor!: number;
   paga_recebida!: Boolean;
 }
-
