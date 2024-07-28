@@ -64,6 +64,30 @@
               class="listagem"
               *ngFor="let item of dadosHome.contasAPagarAtrasadas"
             >
+              <div *ngIf="item.paga_recebida == false">
+                <div class="dadosListagem">
+                  <h4>
+                    {{ item.descricao }}
+                  </h4>
+                  <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
+                </div>
+                <div class="dadosListagem">
+                  <h5>{{ item.data }}</h5>
+                  <i
+                    (click)="pagarDespagar(item)"
+                    class="fas fa-thumbs-down"
+                    title="Despesa não paga, clique para pagar"
+                    *ngIf="item.paga_recebida == false"
+                    style="color: red; cursor: pointer"
+                  ></i>
+                </div>
+                <div class="linha"></div>
+              </div>
+            </div>
+          </div>
+          <h4 class="card-title">Contas a pagar</h4>
+          <div class="listagem" *ngFor="let item of dadosHome.contasAPagar">
+            <div *ngIf="item.paga_recebida == false">
               <div class="dadosListagem">
                 <h4>
                   {{ item.descricao }}
@@ -83,26 +107,6 @@
               <div class="linha"></div>
             </div>
           </div>
-          <h4 class="card-title">Contas a pagar</h4>
-          <div class="listagem" *ngFor="let item of dadosHome.contasAPagar">
-            <div class="dadosListagem">
-              <h4>
-                {{ item.descricao }}
-              </h4>
-              <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
-            </div>
-            <div class="dadosListagem">
-              <h5>{{ item.data }}</h5>
-              <i
-                (click)="pagarDespagar(item)"
-                class="fas fa-thumbs-down"
-                title="Despesa não paga, clique para pagar"
-                *ngIf="item.paga_recebida == false"
-                style="color: red; cursor: pointer"
-              ></i>
-            </div>
-            <div class="linha"></div>
-          </div>
         </div>
       </div>
       <div class="card">
@@ -113,6 +117,30 @@
               class="listagem"
               *ngFor="let item of dadosHome.contasAReceberAtrasadas"
             >
+              <div *ngIf="item.paga_recebida == false">
+                <div class="dadosListagem">
+                  <h4>
+                    {{ item.descricao }}
+                  </h4>
+                  <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
+                </div>
+                <div class="dadosListagem">
+                  <h5>{{ item.data }}</h5>
+                  <i
+                    (click)="pagarDespagar(item)"
+                    class="fas fa-thumbs-down"
+                    title="Receita não paga, clique para pagar"
+                    *ngIf="item.paga_recebida == false"
+                    style="color: red; cursor: pointer"
+                  ></i>
+                </div>
+                <div class="linha"></div>
+              </div>
+            </div>
+          </div>
+          <h4 class="card-title">Contas a receber</h4>
+          <div class="listagem" *ngFor="let item of dadosHome.contasAReceber">
+            <div *ngIf="item.paga_recebida == false">
               <div class="dadosListagem">
                 <h4>
                   {{ item.descricao }}
@@ -131,26 +159,6 @@
               </div>
               <div class="linha"></div>
             </div>
-          </div>
-          <h4 class="card-title">Contas a receber</h4>
-          <div class="listagem" *ngFor="let item of dadosHome.contasAReceber">
-            <div class="dadosListagem">
-              <h4>
-                {{ item.descricao }}
-              </h4>
-              <h4 style="margin-left: 70px">R$ {{ item.valor }}</h4>
-            </div>
-            <div class="dadosListagem">
-              <h5>{{ item.data }}</h5>
-              <i
-                (click)="pagarDespagar(item)"
-                class="fas fa-thumbs-down"
-                title="Receita não paga, clique para pagar"
-                *ngIf="item.paga_recebida == false"
-                style="color: red; cursor: pointer"
-              ></i>
-            </div>
-            <div class="linha"></div>
           </div>
         </div>
       </div>
@@ -172,7 +180,7 @@
             class="fas fa-circle-chevron-down fa-2x"
             (click)="abrirModalCadastrarDespesa()"
           ></i>
-          <i style="cursor: pointer" class="fas fa-chart-line fa-2x"></i>
+           <a href="/lancamentos" style="color: black;"><i style="cursor: pointer" class="fas fa-chart-line fa-2x"></i></a>
         </div>
       </div>
     </div>
